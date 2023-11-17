@@ -28,3 +28,8 @@ variable "public_c_subnet_cidr_block" {
   type    = string
   default = "10.0.16.0/20"
 }
+
+variable "my_ip" {
+  type    = string
+  default = "0.0.0.0/0"
+}

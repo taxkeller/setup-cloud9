@@ -1,6 +1,6 @@
 resource "aws_cloud9_environment_ec2" "this" {
-  name                        = "${local.name_prefix}-cloud9"
-  
+  name = "${local.name_prefix}-cloud9"
+
   instance_type               = "t2.micro"
   connection_type             = "CONNECT_SSM"
   image_id                    = "amazonlinux-2-x86_64"

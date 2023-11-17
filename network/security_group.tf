@@ -25,12 +25,14 @@ resource "aws_security_group" "cloud9" {
   name   = "${local.name_prefix}-sg-for-cloud9"
   vpc_id = aws_vpc.this.id
 
+  /*
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  */
 
   ingress {
     from_port   = 32768
@@ -44,5 +46,28 @@ resource "aws_security_group" "cloud9" {
     to_port     = 0
     protocol    = -1
     cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "http" {
+  name   = "${local.name_prefix}-sg-for-http"
+  vpc_id = aws_vpc.this.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "TCP"
+    cidr_blocks = [var.my_ip]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "${local.name_prefix}-sg-for-http"
   }
 }
