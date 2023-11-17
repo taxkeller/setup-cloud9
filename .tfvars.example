@@ -1,0 +1,4 @@
+aws_access_key             = ""
+aws_secret_access_key      = ""
+aws_region                 = ""
+cloud9_owner_arn           = ""
